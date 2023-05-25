@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -13,11 +15,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Login {
+public class Login extends Cliente {
 
 	private JFrame frmLogin;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private String email;
+	Cliente cliente = new Cliente();
 
 	/**
 	 * Launch the application.
@@ -75,6 +79,12 @@ public class Login {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				email = textField.getText();
+				if(cliente.Leitura(email)) {
+					JOptionPane.showMessageDialog(null,"Login efetuado com sucesso", email, JOptionPane.WARNING_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(null,"Usuario não encontrado", email, JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
