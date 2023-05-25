@@ -1,0 +1,14 @@
+package gui;
+
+import java.io.IOException;
+
+public class teste extends Cliente {
+
+	public static void main(String[] args) throws IOException {
+
+		Cliente cliente = new Cliente();
+		String a = "joaozinho";
+		System.out.println(" "+ cliente.Leitura(a));
+	}
+
+}
