@@ -56,7 +56,7 @@ public class Cliente {   //atributos da classe cliente
 
     public String salvar(){ //metodo para salvar no arquivo as informações capturadas na tela
         //mudar o diretório
-        File f1 = new File("C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt");//instanciando um arquivo e passando o diretorio como parametro
+        File f1 = new File("C:\\Users\\joao.lucas\\Desktop\\TUDO\\cliente.txt");//instanciando um arquivo e passando o diretorio como parametro
 
         if (!f1.exists()) {
             
@@ -74,7 +74,7 @@ public class Cliente {   //atributos da classe cliente
         return "sucesso ao cadastrar";//retorna uma mensagem 
     }
     public boolean Leitura(String email) {
-        String caminhoArquivo = "C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt";
+        String caminhoArquivo = "C:\\Users\\joao.lucas\\Desktop\\TUDO\\cliente.txt";
         String dadoComparacao = email;
         boolean x = false;
 
@@ -83,7 +83,9 @@ public class Cliente {   //atributos da classe cliente
 
             String linha;
             while ((linha = bufferedReader.readLine()) != null) {
-                if (linha == dadoComparacao) {
+                String lin;
+            	lin=linha.substring(7);
+                if (lin.equals(dadoComparacao)) {
                     x = true;
                 }
             }
