@@ -1,7 +1,10 @@
 package gui;
 
+import java.io.BufferedReader;
 import java.io.File;//biblioteca para manipulação de arquivos
+import java.io.FileReader;
 import java.io.FileWriter;//instancia o escritor 
+import java.io.IOException;
 
 public class Cliente {   //atributos da classe cliente
     private String nome;
@@ -69,5 +72,26 @@ public class Cliente {   //atributos da classe cliente
         }
 
         return "sucesso ao cadastrar";//retorna uma mensagem 
+    }
+    public boolean Leitura(String email) {
+        String caminhoArquivo = "C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt";
+        String dadoComparacao = email;
+        boolean x = false;
+
+        try (FileReader fileReader = new FileReader(caminhoArquivo);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String linha;
+            while ((linha = bufferedReader.readLine()) != null) {
+                if (linha == dadoComparacao) {
+                    x = true;
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+		//return dadoComparacao;
+		return x;
     }
 }
