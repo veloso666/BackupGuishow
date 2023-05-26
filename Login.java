@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -12,12 +14,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class Login {
+public class Login extends Cliente {
 
 	private JFrame frmLogin;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private String email;
+	private char[] senha;
+	private String x = "z";
+	Cliente cliente = new Cliente();
 
 	/**
 	 * Launch the application.
@@ -73,17 +80,23 @@ public class Login {
 		frmLogin.getContentPane().add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setBackground(new Color(0, 255, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				email = textField.getText();
+				senha = passwordField.getPassword();
+				if(cliente.Leitura(email)&&(cliente.Leitura2(String.valueOf(senha)))) {
+					JOptionPane.showMessageDialog(null,"Login efetuado com sucesso", email, JOptionPane.WARNING_MESSAGE);
+				}
+				else{
+				JOptionPane.showMessageDialog(null,"Usuario não encontrado ou senha incorreta", email, JOptionPane.WARNING_MESSAGE);
+
+			}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		btnNewButton.setBounds(226, 217, 101, 35);
+		btnNewButton.setBounds(222, 252, 101, 35);
 		frmLogin.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Lembrar Senha");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		btnNewButton_1.setBounds(212, 278, 133, 23);
-		frmLogin.getContentPane().add(btnNewButton_1);
 	}
 }
